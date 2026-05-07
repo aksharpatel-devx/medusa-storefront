@@ -1,0 +1,17 @@
+name: Deploy Storefront to Vercel
+
+on:
+  push:
+    branches: [prod]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Vercel Production
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: team_YwO7oVCS4Uewj5BnynhHgmY8
+          VERCEL_PROJECT_ID: prj_fII0fVmdyWvlznVnWO3A1VNoM0zD
