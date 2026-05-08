@@ -15,8 +15,15 @@ export default async function Nav() {
     getLocale(),
   ])
 
+  const isStaging = process.env.NEXT_PUBLIC_APP_ENV === "staging"
+
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
+      {isStaging && (
+        <div className="w-full bg-yellow-400 text-yellow-900 text-center text-xs font-semibold py-1 tracking-wide">
+          STAGING ENVIRONMENT — Not for public use
+        </div>
+      )}
       <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
         <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
           <div className="flex-1 basis-0 h-full flex items-center">
